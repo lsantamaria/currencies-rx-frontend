@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import CurrenciesListContainer from "./currencies/CurrenciesListContainer";
-import ProfileList from "./currencies/ProfileList";
+import CurrenciesList from "./currencies/CurrenciesList";
 
 const App: React.FC = (props) => {
     return (
@@ -10,7 +10,7 @@ const App: React.FC = (props) => {
                 <div>
                     Currencies:
                 </div>
-              <ProfileList />
+              <CurrenciesListContainer />
             </header>
         </div>
     );

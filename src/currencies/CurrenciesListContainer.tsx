@@ -8,36 +8,29 @@ interface CurrenciesListProps {
 
 }
 
-
 const CurrenciesListContainer: React.FC<CurrenciesListProps> = (props) => {
     const [loading, setLoading] = useState(false);
     const [currencies, setCurrencies] = useState<Array<Currency>>([]);
 
     useEffect(() => {
-        fetchData()
-            .then(data => console.log("fetched:" + data));
-        //
-        // if (!!window.EventSource) {
-        //     var source = new EventSource(Constants.GET_CURRENCIES_URL);
-        //     source.addEventListener('message', function(e) {
-        //         console.log(e);
-        //         console.log("Event source");
-        //         console.log(JSON.parse(e.data));
-        //     }, false);
-        // }
+        if (!!window.EventSource) {
+            var source = new EventSource(Constants.GET_CURRENCIES_URL);
+            source.onmessage = e => {
+                console.log("On message: "+e.data)
+            };
+            source.onerror = e => {
+                console.log("On error: ");
+                console.log(e);
+            };
+            source.onopen = e => {
+                console.log("Openning connection: "+e);
+            };
 
-
+        } else {
+            // Result to xhr polling
+        }
+        return () => source.close();
     });
-
-    const fetchData = async () => {
-        console.log("Fetching...");
-        const response = await fetch(Constants.GET_CURRENCIES_URL);
-        console.log("Response...");
-        console.log(response);
-        const data = await response.json()
-            .then(data2 => console.log(data2));
-
-    };
 
     return (
         <CurrenciesList
