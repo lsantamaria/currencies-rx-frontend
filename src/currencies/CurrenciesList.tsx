@@ -8,11 +8,11 @@ interface IProps {
 const CurrenciesList: React.FC<IProps> = (props) => {
     return <>
 
-        {props.currencies.map((currency: Currency) =>
-            <div key={currency.name}>
+        {/*{props.currencies.map((currency: Currency) =>*/}
+        {/*    <div key={currency.name}>*/}
 
-            </div>
-        )}
+        {/*    </div>*/}
+        {/*)}*/}
     </>
 };
 
