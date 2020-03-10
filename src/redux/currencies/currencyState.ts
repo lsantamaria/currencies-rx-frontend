@@ -1,4 +1,4 @@
-import Currency from "../../currencies/Currency";
+import {Currency} from "../../currencies/types";
 
 export interface CurrencyState{
     currencies:Array<Currency>,

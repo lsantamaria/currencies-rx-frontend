@@ -1,5 +1,5 @@
-import currencyReducer from "./currencies/reducer";
-import {combineReducers} from "redux";
+import {currencyReducer} from "./currencies/reducer";
+import {combineReducers} from "@reduxjs/toolkit";
 
 const rootReducer = combineReducers({
     currencyState: currencyReducer

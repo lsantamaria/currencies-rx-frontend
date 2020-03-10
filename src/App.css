@@ -1,6 +1,15 @@
 .App {
-  text-align: center;
+  text-align: start;
+  display: flex;
+  flex-direction: row;
+  align-content: start;
+  flex-wrap: wrap;
+
 }
+
+.WidgetContainer{
+}
+
 
 .App-logo {
   height: 40vmin;

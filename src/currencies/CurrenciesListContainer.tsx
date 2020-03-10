@@ -1,13 +1,14 @@
 import * as React from 'react';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import CurrenciesList from "./CurrenciesList";
-import Currency from "./Currency";
 import {RootState} from "../redux/root-reducer";
 import {fetchCurrencies} from "../redux/currencies/action-creators";
-import {connect} from "react-redux";
+import {connect, ConnectedProps} from "react-redux";
+import {Currency} from "./types";
 
 interface CurrenciesListProps {
-
+    currencies: Array<Currency>,
+    style?:Object
 }
 
 const mapStateToProps = (state:RootState) => {
@@ -20,15 +21,24 @@ const mapDispatchToProps = {
     fetchCurrencies
 };
 
-const CurrenciesListContainer: React.FC<CurrenciesListProps> = (props) => {
+const connector = connect(mapStateToProps, mapDispatchToProps);
+type Props = ConnectedProps<typeof connector> & CurrenciesListProps
+
+
+const CurrenciesListContainer: React.FC<Props> = (props:Props) => {
     const [loading, setLoading] = useState(false);
-    const [currencies, setCurrencies] = useState<Array<Currency>>([]);
+
+    useEffect(() => {
+        props.fetchCurrencies();
+    }, []);
 
     return (
         <CurrenciesList
-            currencies={currencies}
+            currencies={props.currencies}
+            style={props.style}
         />
     )
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CurrenciesListContainer);
+
+export default connector(CurrenciesListContainer);

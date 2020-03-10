@@ -1,5 +1,4 @@
-import Currency from "../../currencies/Currency";
-import Any = jasmine.Any;
+import {Currency} from "../../currencies/types";
 
 export const FETCH_CURRENCIES_ACTION = "FETCH_CURRENCIES";
 export const FETCH_CURRENCIES_SUCCESS = "FETCH_CURRENCIES_SUCCESS";
