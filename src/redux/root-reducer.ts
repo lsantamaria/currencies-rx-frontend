@@ -1,4 +1,4 @@
-import {currencyReducer} from "./currencies/reducer";
+import {currencyReducer} from "../currencies/reducer";
 import {combineReducers} from "@reduxjs/toolkit";
 
 const rootReducer = combineReducers({

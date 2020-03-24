@@ -1,4 +1,4 @@
-import {Currency} from "../../currencies/types";
+import {Currency} from "./types";
 
 export const FETCH_CURRENCIES_ACTION = "FETCH_CURRENCIES";
 export const FETCH_CURRENCIES_SUCCESS = "FETCH_CURRENCIES_SUCCESS";

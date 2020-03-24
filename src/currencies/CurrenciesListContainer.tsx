@@ -2,7 +2,7 @@ import * as React from 'react';
 import {useEffect} from "react";
 import CurrenciesList from "./CurrenciesList";
 import {RootState} from "../redux/root-reducer";
-import {fetchCurrencies} from "../redux/currencies/action-creators";
+import {fetchCurrencies} from "./action-creators";
 import {connect, ConnectedProps} from "react-redux";
 import {Currency} from "./types";
 

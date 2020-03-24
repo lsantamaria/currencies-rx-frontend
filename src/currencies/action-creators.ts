@@ -3,10 +3,10 @@ import {
     FETCH_CURRENCIES_SUCCESS
 } from "./actions";
 import {ThunkAction} from "redux-thunk";
-import {RootState} from "../root-reducer";
+import {RootState} from "../redux/root-reducer";
 import {Action} from "redux";
-import {Constants} from "../../constants";
-import {Currency} from "../../currencies/types";
+import {Constants} from "../constants";
+import {Currency} from "./types";
 
 const fetchCurrenciesAction: CurrencyActionType = {
     type: FETCH_CURRENCIES_ACTION,
