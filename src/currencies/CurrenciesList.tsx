@@ -1,7 +1,17 @@
 import * as React from "react";
 import {Currency} from "./types";
 import {
-    WithStyles, Theme, createStyles, withStyles, TableContainer, Table, TableHead, TableRow, TableCell, TableBody
+    WithStyles,
+    Theme,
+    createStyles,
+    withStyles,
+    TableContainer,
+    Table,
+    TableHead,
+    TableRow,
+    TableCell,
+    TableBody,
+    Avatar
 } from "@material-ui/core";
 import Paper from '@material-ui/core/Paper';
 
@@ -11,9 +21,9 @@ const styles = (theme: Theme) =>
             display:'flex',
             justifyContent: 'space-between',
             flex: 1,
+            maxHeight: 500
         },
         table: {
-            // maxWidth: 650,
         },
     });
 
@@ -28,15 +38,19 @@ const CurrenciesList = withStyles(styles)
         <Table className={classes.table} aria-label="simple table">
             <TableHead>
                 <TableRow>
-                    <TableCell>Name</TableCell>
+                    <TableCell>Icon</TableCell>
+                    <TableCell align="left">Name</TableCell>
                     <TableCell align="right">Symbol</TableCell>
+                    <TableCell align="right">Description</TableCell>
                 </TableRow>
             </TableHead>
             <TableBody>
-                {currencies.map(row => (
+                {currencies && currencies.map(row => (
                     <TableRow key={row.name}>
+                        <TableCell><Avatar alt="Remy Sharp" src={row.iconUrl} /></TableCell>
                         <TableCell component="th" scope="row">{row.name}</TableCell>
                         <TableCell align="right">{row.symbol}</TableCell>
+                        <TableCell align="right">{row.description}</TableCell>
                     </TableRow>
                 ))}
             </TableBody>

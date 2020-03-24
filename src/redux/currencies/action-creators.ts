@@ -13,30 +13,36 @@ const fetchCurrenciesAction: CurrencyActionType = {
     payload: {}
 };
 
-const fetchCurrenciesSuccess = (payload: Array<Currency>):CurrencyActionType => {
+const fetchCurrenciesSuccess = (payload: Array<Currency>): CurrencyActionType => {
     return {
         type: FETCH_CURRENCIES_SUCCESS,
         payload: payload
     };
-}
+};
 
-const fetchCurrenciesError: CurrencyActionType = {
-    type: FETCH_CURRENCIES_ERROR,
-    payload: {}
+const fetchCurrenciesError = (payload: Object): CurrencyActionType => {
+    return {
+        type: FETCH_CURRENCIES_ERROR,
+        payload: payload
+    };
 };
 
 export const fetchCurrencies = (): ThunkAction<void, RootState, null, Action<string>> => {
     return dispatch => {
         dispatch(fetchCurrenciesAction);
-        exampleAPI()
-            .then((response:Response) =>
-                    response.json().then(data =>
-                        dispatch(fetchCurrenciesSuccess(data))
-                    ))
+        fetch(Constants.GET_CURRENCIES_URL)
+            .then((response: Response) => {
+                    response.json().then(data => {
+                        if (response.status / 100 === 5 || response.status / 100 === 4) {
+                            dispatch(fetchCurrenciesError(data))
+                        } else {
+                            dispatch(fetchCurrenciesSuccess(data))
+                        }
+                    })
+                }
+            )
+            .catch(error => {
+                dispatch(fetchCurrenciesError(error));
+            })
     };
 };
-
-
-function exampleAPI() {
-    return fetch(Constants.GET_CURRENCIES_URL);
-}

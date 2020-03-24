@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import CurrenciesList from "./CurrenciesList";
 import {RootState} from "../redux/root-reducer";
 import {fetchCurrencies} from "../redux/currencies/action-creators";
@@ -13,7 +13,7 @@ interface CurrenciesListProps {
 
 const mapStateToProps = (state:RootState) => {
     return {
-        currencies: state.currencyState.currencies
+        currencies: state.currencyState.currencies || []
     }
 };
 
@@ -26,7 +26,6 @@ type Props = ConnectedProps<typeof connector> & CurrenciesListProps
 
 
 const CurrenciesListContainer: React.FC<Props> = (props:Props) => {
-    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         props.fetchCurrencies();
@@ -39,6 +38,5 @@ const CurrenciesListContainer: React.FC<Props> = (props:Props) => {
         />
     )
 };
-
 
 export default connector(CurrenciesListContainer);
