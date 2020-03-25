@@ -22,9 +22,7 @@ const styles = (theme: Theme) =>
             justifyContent: 'space-between',
             flex: 1,
             maxHeight: 500
-        },
-        table: {
-        },
+        }
     });
 
 interface CurrencyListProps extends WithStyles<typeof styles> {
@@ -35,7 +33,7 @@ interface CurrencyListProps extends WithStyles<typeof styles> {
 const CurrenciesList = withStyles(styles)
 (({currencies, classes, style}: CurrencyListProps) => (
     <TableContainer component={Paper} className={classes.container} style={style}>
-        <Table className={classes.table} aria-label="simple table">
+        <Table aria-label="simple table">
             <TableHead>
                 <TableRow>
                     <TableCell>Icon</TableCell>

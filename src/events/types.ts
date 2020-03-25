@@ -1,5 +1,5 @@
 export interface CurrencyEvent {
-    id: string,
+    id?: string,
     type: string,
     info:string
 }

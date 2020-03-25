@@ -5,8 +5,9 @@ import {
 import {ThunkAction} from "redux-thunk";
 import {RootState} from "../redux/root-reducer";
 import {Action} from "redux";
-import {Constants} from "../constants";
+import {Constants} from "../common/constants";
 import {Currency} from "./types";
+import {isErrorResponse} from "../common/httpUtils";
 
 const fetchCurrenciesAction: CurrencyActionType = {
     type: FETCH_CURRENCIES_ACTION,
@@ -33,7 +34,7 @@ export const fetchCurrencies = (): ThunkAction<void, RootState, null, Action<str
         fetch(Constants.GET_CURRENCIES_URL)
             .then((response: Response) => {
                     response.json().then(data => {
-                        if (response.status / 100 === 5 || response.status / 100 === 4) {
+                        if (isErrorResponse(response)) {
                             dispatch(fetchCurrenciesError(data))
                         } else {
                             dispatch(fetchCurrenciesSuccess(data))

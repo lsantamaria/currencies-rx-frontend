@@ -13,7 +13,9 @@ const EventsListContainer: React.FC<EventsListProps> = (props: EventsListProps) 
     const [events, setEvents] = useState<Array<CurrencyEvent>>([]);
 
     props.events.subscribe((next: CurrencyEvent) => {
-        setEvents([...events, next]);
+        if(!events.find(el => el.id === next.id)){
+            setEvents([...events, next]);
+        }
     });
 
     return (

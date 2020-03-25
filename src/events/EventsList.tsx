@@ -11,10 +11,7 @@ const styles = (theme: Theme) =>
             display:'flex',
             justifyContent: 'space-between',
             flex: 1,
-        },
-        table: {
-            // maxWidth: 650,
-        },
+        }
     });
 
 interface EventListProps extends WithStyles<typeof styles> {
@@ -25,7 +22,7 @@ interface EventListProps extends WithStyles<typeof styles> {
 const EventList = withStyles(styles)
 (({events, classes, style}: EventListProps) => (
     <TableContainer component={Paper} className={classes.container} style={style}>
-        <Table className={classes.table} aria-label="simple table">
+        <Table aria-label="simple table">
             <TableHead>
                 <TableRow>
                     <TableCell align="left">Type</TableCell>
