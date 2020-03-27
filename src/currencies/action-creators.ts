@@ -9,9 +9,11 @@ import {Constants} from "../common/constants";
 import {Currency} from "./types";
 import {isErrorResponse} from "../common/httpUtils";
 
-const fetchCurrenciesAction: CurrencyActionType = {
-    type: FETCH_CURRENCIES_ACTION,
-    payload: {}
+const fetchCurrenciesAction = (): CurrencyActionType => {
+    return {
+        type: FETCH_CURRENCIES_ACTION,
+        payload: {}
+    }
 };
 
 const fetchCurrenciesSuccess = (payload: Array<Currency>): CurrencyActionType => {
@@ -30,7 +32,7 @@ const fetchCurrenciesError = (payload: Object): CurrencyActionType => {
 
 export const fetchCurrencies = (): ThunkAction<void, RootState, null, Action<string>> => {
     return dispatch => {
-        dispatch(fetchCurrenciesAction);
+        dispatch(fetchCurrenciesAction());
         fetch(Constants.GET_CURRENCIES_URL)
             .then((response: Response) => {
                     response.json().then(data => {
