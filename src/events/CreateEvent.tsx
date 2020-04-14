@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {ButtonGroup, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, TextField} from "@material-ui/core";
+import {FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, TextField} from "@material-ui/core";
 import {useState} from "react";
 import {CurrencyEvent} from "./types";
 import Button from "@material-ui/core/Button";

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: frontend
+  name: currencies-rx-frontend
+spec:
+  ports:
+  - port: 3000
+    protocol: TCP
+  selector:
+    app: currencies-rx-frontend
+status:
+  loadBalancer: {}
